@@ -1,21 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
+
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
-
   return (
     <>
-    <NavBar />
-
-    <ItemListContainer
-      greeting={'Bienvenidos, esta es la primer preentrega'}
-    />
-    
-
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<ItemListContainer greeting={'Bienvenidos, esta es la primer preentrega'}/>}/>
+        <Route path='/detail/:pid' element={<ItemDetailContainer/>}/>
+        
+      </Routes>
+    </Router>
     </>
   )
 }
